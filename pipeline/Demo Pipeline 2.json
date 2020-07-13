@@ -1,14 +1,14 @@
 {
-	"name": "Demo Pipeline1",
+	"name": "Demo Pipeline 2",
 	"properties": {
 		"activities": [
 			{
-				"name": "Wait 5Sec",
+				"name": "Wait2",
 				"type": "Wait",
 				"dependsOn": [],
 				"userProperties": [],
 				"typeProperties": {
-					"waitTimeInSeconds": 5
+					"waitTimeInSeconds": 2
 				}
 			}
 		],
