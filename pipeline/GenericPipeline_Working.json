@@ -47,7 +47,7 @@
 					"isSequential": true,
 					"activities": [
 						{
-							"name": "Copy data2",
+							"name": "Dynamic Data Copy from Source to Destn",
 							"type": "Copy",
 							"dependsOn": [
 								{
