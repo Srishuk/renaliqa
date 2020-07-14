@@ -44,6 +44,7 @@
 						"value": "@activity('GetListOfTables').output.value",
 						"type": "Expression"
 					},
+					"isSequential": true,
 					"activities": [
 						{
 							"name": "Copy data2",
@@ -76,7 +77,7 @@
 								"sink": {
 									"type": "AzureSqlSink",
 									"preCopyScript": {
-										"value": "@{if(pipeline().parameters.Overwrite, concat('TRUNCATE TABLE ',item().destdb,'.',item().destschema,'.',item().desttablename,';'),'SELECT 1;')}",
+										"value": "@{if(pipeline().parameters.Overwrite, concat('TRUNCATE TABLE ',item().destschema,'.',item().desttablename,';'),'SELECT 1;')}",
 										"type": "Expression"
 									},
 									"disableMetricsCollection": false
