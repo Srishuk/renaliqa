@@ -1,5 +1,5 @@
 {
-	"name": "GenericPipeline",
+	"name": "Old_GenericPipeline",
 	"properties": {
 		"activities": [
 			{
@@ -74,44 +74,12 @@
 									},
 									"disableMetricsCollection": false
 								},
-								"enableStaging": false,
-								"translator": {
-									"type": "TabularTranslator",
-									"typeConversion": true,
-									"typeConversionSettings": {
-										"allowDataTruncation": true,
-										"treatBooleanAsNumber": false
-									}
-								}
+								"enableStaging": false
 							},
 							"inputs": [
 								{
 									"referenceName": "AzureSqlTable_DM_ALL",
 									"type": "DatasetReference"
-								}
-							],
-							"outputs": [
-								{
-									"referenceName": "AzureSqlTable_Dest",
-									"type": "DatasetReference",
-									"parameters": {
-										"DatabaseName": {
-											"value": "@item().destdb",
-											"type": "Expression"
-										},
-										"SchemaName": {
-											"value": "@item().destschema",
-											"type": "Expression"
-										},
-										"TableName": {
-											"value": "@item().desttablename",
-											"type": "Expression"
-										},
-										"Overwrite": {
-											"value": "TRUE",
-											"type": "Expression"
-										}
-									}
 								}
 							]
 						},
@@ -144,40 +112,12 @@
 									},
 									"disableMetricsCollection": false
 								},
-								"enableStaging": false,
-								"translator": {
-									"type": "TabularTranslator",
-									"typeConversion": true,
-									"typeConversionSettings": {
-										"allowDataTruncation": true,
-										"treatBooleanAsNumber": false
-									}
-								}
+								"enableStaging": false
 							},
 							"inputs": [
 								{
 									"referenceName": "AzureSqlTable_DM_ALL",
 									"type": "DatasetReference"
-								}
-							],
-							"outputs": [
-								{
-									"referenceName": "AzureSqlTableDest",
-									"type": "DatasetReference",
-									"parameters": {
-										"TableName": {
-											"value": "@item().desttablename",
-											"type": "Expression"
-										},
-										"SchemaName": {
-											"value": "@item().destschema",
-											"type": "Expression"
-										},
-										"DatabaseName": {
-											"value": "@item().destdb",
-											"type": "Expression"
-										}
-									}
 								}
 							]
 						}
