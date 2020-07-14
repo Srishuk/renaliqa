@@ -1,0 +1,12 @@
+{
+	"name": "AzureSqlTbl_DMALL",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "DM_ALL",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": []
+	}
+}
