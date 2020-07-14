@@ -22,7 +22,7 @@
 				"type": "string"
 			},
 			"Overwrite": {
-				"type": "string"
+				"type": "bool"
 			}
 		},
 		"annotations": [],
