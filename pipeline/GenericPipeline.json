@@ -82,17 +82,7 @@
 							"inputs": [
 								{
 									"referenceName": "AzureSqlTbl_DMALL",
-									"type": "DatasetReference",
-									"parameters": {
-										"SchemaName": {
-											"value": "@item().sourceschema",
-											"type": "Expression"
-										},
-										"TableName": {
-											"value": "@item().sourcetablename",
-											"type": "Expression"
-										}
-									}
+									"type": "DatasetReference"
 								}
 							],
 							"outputs": [
