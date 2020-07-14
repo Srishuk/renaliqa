@@ -28,10 +28,23 @@
 				}
 			},
 			{
-				"name": "ForEach1",
+				"name": "ForEachDBTable",
 				"type": "ForEach",
-				"dependsOn": [],
-				"userProperties": []
+				"dependsOn": [
+					{
+						"activity": "GetListOfTables",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('GetListOfTables').output.value",
+						"type": "Expression"
+					}
+				}
 			}
 		],
 		"annotations": []
