@@ -119,6 +119,11 @@
 				}
 			}
 		],
+		"parameters": {
+			"Overwrite": {
+				"type": "string"
+			}
+		},
 		"annotations": []
 	}
 }
