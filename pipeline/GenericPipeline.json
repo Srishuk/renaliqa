@@ -67,7 +67,12 @@
 									"queryTimeout": "02:00:00"
 								},
 								"sink": {
-									"type": "AzureSqlSink"
+									"type": "AzureSqlSink",
+									"preCopyScript": {
+										"value": "@{if(pipeline().parameters.Overwrite,concat('TRUNCATE TABLE ',item().destdb,'.',item().destschema,'.',item().desttablename,';'),'SELECT 1;')}",
+										"type": "Expression"
+									},
+									"disableMetricsCollection": false
 								},
 								"enableStaging": false,
 								"translator": {
@@ -100,6 +105,10 @@
 										},
 										"TableName": {
 											"value": "@item().desttablename",
+											"type": "Expression"
+										},
+										"Overwrite": {
+											"value": "TRUE",
 											"type": "Expression"
 										}
 									}
