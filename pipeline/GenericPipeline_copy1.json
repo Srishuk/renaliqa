@@ -120,6 +120,10 @@
 										"tablename": {
 											"value": "@item().desttablename",
 											"type": "Expression"
+										},
+										"Overwrite": {
+											"value": "FALSE",
+											"type": "Expression"
 										}
 									}
 								}
