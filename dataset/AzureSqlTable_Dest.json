@@ -5,6 +5,17 @@
 			"referenceName": "AzureSqlDatabase_Dest",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"DatabaseName": {
+				"type": "string"
+			},
+			"SchemaName": {
+				"type": "string"
+			},
+			"TableName": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "AzureSqlTable",
 		"schema": []
