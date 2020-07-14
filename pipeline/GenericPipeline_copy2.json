@@ -77,7 +77,7 @@
 								"sink": {
 									"type": "AzureSqlSink",
 									"preCopyScript": {
-										"value": "@{if(pipeline().parameters.Overwrite, concat('delete from ',item().destschema,'.',item().desttablename,' where Client=',replace(item().sourcedb,'dev_renaliq_dm_',''),';'),'SELECT 1;')}",
+										"value": "@{if(pipeline().parameters.Overwrite, concat('delete from ',item().destschema,'.',item().desttablename,' where Client=''',replace(item().sourcedb,'dev_renaliq_dm_',''),''';'),'SELECT 1;')}",
 										"type": "Expression"
 									},
 									"disableMetricsCollection": false
