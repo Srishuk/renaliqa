@@ -86,28 +86,28 @@
 							},
 							"inputs": [
 								{
-									"referenceName": "AzureSqlTable_DM_ALL",
-									"type": "DatasetReference"
-								}
-							],
-							"outputs": [
-								{
 									"referenceName": "AzureSqlTableDest",
 									"type": "DatasetReference",
 									"parameters": {
 										"TableName": {
-											"value": "@item().desttablename",
+											"value": "@item().sourcetablename",
 											"type": "Expression"
 										},
 										"SchemaName": {
-											"value": "@item().destschema",
+											"value": "@item().sourceschema",
 											"type": "Expression"
 										},
 										"DatabaseName": {
-											"value": "@item().destdb",
+											"value": "@item().sourcedb",
 											"type": "Expression"
 										}
 									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "AzureSqlTable_DM_ALL",
+									"type": "DatasetReference"
 								}
 							]
 						}
