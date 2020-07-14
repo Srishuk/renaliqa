@@ -20,6 +20,9 @@
 			},
 			"tablename": {
 				"type": "string"
+			},
+			"Overwrite": {
+				"type": "string"
 			}
 		},
 		"annotations": [],
