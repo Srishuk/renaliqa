@@ -1,0 +1,39 @@
+{
+	"name": "AzureSqlTableDestination",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabaseDestination",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"databasename": {
+					"value": "@dataset().databasename",
+					"type": "Expression"
+				}
+			}
+		},
+		"parameters": {
+			"databasename": {
+				"type": "string"
+			},
+			"schemaname": {
+				"type": "string"
+			},
+			"tablename": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": {
+				"value": "@dataset().schemaname",
+				"type": "Expression"
+			},
+			"table": {
+				"value": "@dataset().tablename",
+				"type": "Expression"
+			}
+		}
+	}
+}
