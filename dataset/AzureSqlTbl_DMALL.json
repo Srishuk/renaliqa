@@ -11,9 +11,6 @@
 			},
 			"TableName": {
 				"type": "string"
-			},
-			"Overwrite": {
-				"type": "string"
 			}
 		},
 		"annotations": [],
