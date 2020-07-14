@@ -43,10 +43,90 @@
 					"items": {
 						"value": "@activity('GetListOfTables').output.value",
 						"type": "Expression"
-					}
+					},
+					"activities": [
+						{
+							"name": "Copy data1",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "AzureSqlSource",
+									"queryTimeout": "02:00:00"
+								},
+								"sink": {
+									"type": "AzureSqlSink"
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "AzureSqlTbl_DMALL",
+									"type": "DatasetReference",
+									"parameters": {
+										"SchemaName": {
+											"value": "@item().sourceschema",
+											"type": "Expression"
+										},
+										"TableName": {
+											"value": "@item().sourcetablename",
+											"type": "Expression"
+										}
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "AzureSqlTable_Dest",
+									"type": "DatasetReference",
+									"parameters": {
+										"DatabaseName": {
+											"value": "@item().destdb",
+											"type": "Expression"
+										},
+										"SchemaName": {
+											"value": "@item().destschema",
+											"type": "Expression"
+										},
+										"TableName": {
+											"value": "@item().desttablename",
+											"type": "Expression"
+										}
+									}
+								}
+							]
+						}
+					]
 				}
 			}
 		],
+		"parameters": {
+			"Databasename": {
+				"type": "string"
+			},
+			"SchemaName": {
+				"type": "string"
+			},
+			"TableName": {
+				"type": "string"
+			}
+		},
 		"annotations": []
 	}
 }
