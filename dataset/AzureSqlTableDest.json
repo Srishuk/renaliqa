@@ -20,9 +20,6 @@
 			},
 			"DatabaseName": {
 				"type": "string"
-			},
-			"Overwrite": {
-				"type": "bool"
 			}
 		},
 		"annotations": [],
