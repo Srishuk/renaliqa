@@ -21,7 +21,7 @@
 						"queryTimeout": "02:00:00"
 					},
 					"dataset": {
-						"referenceName": "AzureSqlTbl_DMALL",
+						"referenceName": "AzureSqlTable_DM_ALL",
 						"type": "DatasetReference"
 					},
 					"firstRowOnly": false
@@ -86,7 +86,7 @@
 							},
 							"inputs": [
 								{
-									"referenceName": "AzureSqlTbl_DMALL",
+									"referenceName": "AzureSqlTable_DM_ALL",
 									"type": "DatasetReference"
 								}
 							],
