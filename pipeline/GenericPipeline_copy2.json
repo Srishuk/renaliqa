@@ -69,7 +69,7 @@
 								"source": {
 									"type": "AzureSqlSource",
 									"sqlReaderQuery": {
-										"value": "@concat('select ',replace(item().sourcedb,'dev_renaliq_dm_',''),' as Client,* from ',item().sourceschema,'.',item().sourcetablename) ",
+										"value": "@concat('select ''',replace(item().sourcedb,'dev_renaliq_dm_',''),''' as Client,* from ',item().sourceschema,'.',item().sourcetablename) ",
 										"type": "Expression"
 									},
 									"queryTimeout": "02:00:00"
