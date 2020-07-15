@@ -33,6 +33,153 @@
 						"databasename": "dev_renaliq_dm_all"
 					}
 				}
+			},
+			{
+				"name": "GetListOfTables",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "Stored procedure1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "select id,sourcedb,sourceschema,sourcetablename,destdb,destschema,desttablename from [tbl_Staging_Pipeline_Details] where isactiveflag='Y'\norder by id",
+						"queryTimeout": "02:00:00"
+					},
+					"dataset": {
+						"referenceName": "AzureSqlTable_DM_ALL",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "ForEachDBTable",
+				"type": "ForEach",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('GetListOfTables').output.value",
+						"type": "Expression"
+					},
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "Dynamic Data Copy from Source to Destn",
+							"type": "Copy",
+							"dependsOn": [
+								{
+									"activity": "Wait For 5 Secs",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "AzureSqlSource",
+									"sqlReaderQuery": {
+										"value": "@concat('select ''',replace(item().sourcedb,'dev_renaliq_dm_',''),''' as Client,* from ',item().sourceschema,'.',item().sourcetablename) ",
+										"type": "Expression"
+									},
+									"queryTimeout": "02:00:00"
+								},
+								"sink": {
+									"type": "AzureSqlSink",
+									"preCopyScript": {
+										"value": "@{if(pipeline().parameters.Overwrite, concat('delete from ',item().destschema,'.',item().desttablename,' where Client=''',replace(item().sourcedb,'dev_renaliq_dm_',''),''';'),'SELECT 1;')}",
+										"type": "Expression"
+									},
+									"disableMetricsCollection": false
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "AzureSqlTableSource",
+									"type": "DatasetReference",
+									"parameters": {
+										"databasename": {
+											"value": "@item().sourcedb",
+											"type": "Expression"
+										},
+										"schemaname": {
+											"value": "@item().sourceschema",
+											"type": "Expression"
+										},
+										"tablename": {
+											"value": "@item().sourcetablename",
+											"type": "Expression"
+										}
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "AzureSqlTableDestination",
+									"type": "DatasetReference",
+									"parameters": {
+										"databasename": {
+											"value": "@item().destdb",
+											"type": "Expression"
+										},
+										"schemaname": {
+											"value": "@item().destschema",
+											"type": "Expression"
+										},
+										"tablename": {
+											"value": "@item().desttablename",
+											"type": "Expression"
+										},
+										"Overwrite": {
+											"value": "FALSE",
+											"type": "Expression"
+										}
+									}
+								}
+							]
+						},
+						{
+							"name": "Wait For 5 Secs",
+							"type": "Wait",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"waitTimeInSeconds": 5
+							}
+						}
+					]
+				}
 			}
 		],
 		"parameters": {
