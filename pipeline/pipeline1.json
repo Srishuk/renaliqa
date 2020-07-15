@@ -56,7 +56,10 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "select id,sourcedb,sourceschema,sourcetablename,destdb,destschema,desttablename from [tbl_Staging_Pipeline_Details] where isactiveflag='Y'\norder by id",
+						"sqlReaderQuery": {
+							"value": "@concat('select id,sourcedb,sourceschema,sourcetablename,destdb,destschema,desttablename from [tbl_Staging_Pipeline_Details] where isactiveflag=''Y'' and pipelineid=',string(pipeline().parameters.id),' order by id ')",
+							"type": "Expression"
+						},
 						"queryTimeout": "02:00:00"
 					},
 					"dataset": {
@@ -69,7 +72,14 @@
 			{
 				"name": "ForEachDBTable",
 				"type": "ForEach",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "GetListOfTables",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
