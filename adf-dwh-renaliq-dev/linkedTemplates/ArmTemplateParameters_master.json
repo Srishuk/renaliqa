@@ -8,6 +8,27 @@
 		"AzureBlobStorage1_connectionString": {
 			"value": ""
 		},
+		"AzureSqlDatabaseDest_connectionString": {
+			"value": ""
+		},
+		"AzureSqlDatabaseDestination_connectionString": {
+			"value": ""
+		},
+		"AzureSqlDatabaseSource_connectionString": {
+			"value": ""
+		},
+		"AzureSqlDatabaseSrc_connectionString": {
+			"value": ""
+		},
+		"AzureSqlDatabase_Dest_connectionString": {
+			"value": ""
+		},
+		"AzureSqlDatabase_Src_connectionString": {
+			"value": ""
+		},
+		"DM_ALL_connectionString": {
+			"value": ""
+		},
 		"containerUri": {
 			"value": ""
 		},

@@ -11,6 +11,34 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage1'"
 		},
+		"AzureSqlDatabaseDest_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabaseDest'"
+		},
+		"AzureSqlDatabaseDestination_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabaseDestination'"
+		},
+		"AzureSqlDatabaseSource_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabaseSource'"
+		},
+		"AzureSqlDatabaseSrc_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabaseSrc'"
+		},
+		"AzureSqlDatabase_Dest_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabase_Dest'"
+		},
+		"AzureSqlDatabase_Src_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabase_Src'"
+		},
+		"DM_ALL_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'DM_ALL'"
+		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI to storage account containing linked ARM templates"
@@ -40,6 +68,27 @@
 					},
 					"AzureBlobStorage1_connectionString": {
 						"value": "[parameters('AzureBlobStorage1_connectionString')]"
+					},
+					"AzureSqlDatabaseDest_connectionString": {
+						"value": "[parameters('AzureSqlDatabaseDest_connectionString')]"
+					},
+					"AzureSqlDatabaseDestination_connectionString": {
+						"value": "[parameters('AzureSqlDatabaseDestination_connectionString')]"
+					},
+					"AzureSqlDatabaseSource_connectionString": {
+						"value": "[parameters('AzureSqlDatabaseSource_connectionString')]"
+					},
+					"AzureSqlDatabaseSrc_connectionString": {
+						"value": "[parameters('AzureSqlDatabaseSrc_connectionString')]"
+					},
+					"AzureSqlDatabase_Dest_connectionString": {
+						"value": "[parameters('AzureSqlDatabase_Dest_connectionString')]"
+					},
+					"AzureSqlDatabase_Src_connectionString": {
+						"value": "[parameters('AzureSqlDatabase_Src_connectionString')]"
+					},
+					"DM_ALL_connectionString": {
+						"value": "[parameters('DM_ALL_connectionString')]"
 					}
 				}
 			},
