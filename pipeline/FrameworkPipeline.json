@@ -292,86 +292,35 @@
 				}
 			},
 			{
-				"name": "If Condition1",
-				"type": "IfCondition",
-				"dependsOn": [
-					{
-						"activity": "ForEachDBTable",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"name": "Update the Endtime in Pipeline Master_copy2",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
 				"userProperties": [],
 				"typeProperties": {
-					"ifFalseActivities": [
-						{
-							"name": "Update the Endtime in Pipeline Master_copy1",
-							"type": "SqlServerStoredProcedure",
-							"dependsOn": [],
-							"policy": {
-								"timeout": "7.00:00:00",
-								"retry": 0,
-								"retryIntervalInSeconds": 30,
-								"secureOutput": false,
-								"secureInput": false
+					"storedProcedureName": "[dbo].[usp_PipelineFlow_Master_EndTime]",
+					"storedProcedureParameters": {
+						"id": {
+							"value": {
+								"value": "@pipeline().parameters.id",
+								"type": "Expression"
 							},
-							"userProperties": [],
-							"typeProperties": {
-								"storedProcedureName": "[dbo].[usp_PipelineFlow_Master_EndTime]",
-								"storedProcedureParameters": {
-									"id": {
-										"value": {
-											"value": "@pipeline().parameters.id",
-											"type": "Expression"
-										},
-										"type": "Int32"
-									}
-								}
-							},
-							"linkedServiceName": {
-								"referenceName": "AzureSqlDatabaseDestination",
-								"type": "LinkedServiceReference",
-								"parameters": {
-									"databasename": "dev_renaliq_dm_all"
-								}
-							}
+							"type": "Int32"
 						}
-					],
-					"ifTrueActivities": [
-						{
-							"name": "Update the Endtime in Pipeline Master",
-							"type": "SqlServerStoredProcedure",
-							"dependsOn": [],
-							"policy": {
-								"timeout": "7.00:00:00",
-								"retry": 0,
-								"retryIntervalInSeconds": 30,
-								"secureOutput": false,
-								"secureInput": false
-							},
-							"userProperties": [],
-							"typeProperties": {
-								"storedProcedureName": "[dbo].[usp_PipelineFlow_Master_EndTime]",
-								"storedProcedureParameters": {
-									"id": {
-										"value": {
-											"value": "@pipeline().parameters.id",
-											"type": "Expression"
-										},
-										"type": "Int32"
-									}
-								}
-							},
-							"linkedServiceName": {
-								"referenceName": "AzureSqlDatabaseDestination",
-								"type": "LinkedServiceReference",
-								"parameters": {
-									"databasename": "dev_renaliq_dm_all"
-								}
-							}
-						}
-					]
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabaseDestination",
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"databasename": "dev_renaliq_dm_all"
+					}
 				}
 			}
 		],
