@@ -1,9 +1,9 @@
 {
-	"name": "pipeline1",
+	"name": "FrameworkPipeline",
 	"properties": {
 		"activities": [
 			{
-				"name": "Stored procedure1",
+				"name": "Update the Starttime in Pipeline Master",
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [],
 				"policy": {
@@ -35,11 +35,12 @@
 				}
 			},
 			{
-				"name": "GetListOfTables",
+				"name": "GetListOfTables for the Pipeline",
+				"description": "GetListOfTables for the Pipeline",
 				"type": "Lookup",
 				"dependsOn": [
 					{
-						"activity": "Stored procedure1",
+						"activity": "Update the Starttime in Pipeline Master",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -74,7 +75,7 @@
 				"type": "ForEach",
 				"dependsOn": [
 					{
-						"activity": "GetListOfTables",
+						"activity": "GetListOfTables for the Pipeline",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -184,7 +185,7 @@
 							"type": "Wait",
 							"dependsOn": [
 								{
-									"activity": "Stored procedure3",
+									"activity": "Update the Starttime in Pipeline Details",
 									"dependencyConditions": [
 										"Succeeded"
 									]
@@ -196,7 +197,7 @@
 							}
 						},
 						{
-							"name": "Stored procedure2",
+							"name": "Update the Endtime in Pipeline Details",
 							"type": "SqlServerStoredProcedure",
 							"dependsOn": [
 								{
@@ -242,7 +243,7 @@
 							}
 						},
 						{
-							"name": "Stored procedure3",
+							"name": "Update the Starttime in Pipeline Details",
 							"type": "SqlServerStoredProcedure",
 							"dependsOn": [],
 							"policy": {
@@ -284,7 +285,7 @@
 				}
 			},
 			{
-				"name": "Stored procedure4",
+				"name": "Update the Endtime in Pipeline Master",
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
