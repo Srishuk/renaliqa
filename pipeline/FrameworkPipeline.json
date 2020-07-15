@@ -234,7 +234,7 @@
 									},
 									"status": {
 										"value": {
-											"value": "@activity('Dynamic Data Copy from Source to Destn').output.executionDetails",
+											"value": "@activity('Dynamic Data Copy from Source to Destn').output.executionDetails[0].status",
 											"type": "Expression"
 										},
 										"type": "String"
