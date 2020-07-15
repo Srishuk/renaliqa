@@ -17,7 +17,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "select id,sourcedb,sourceschema,sourcetablename,destdb,destschema,desttablename from [tbl_Staging_All] where isactiveflag='Y'\norder by id",
+						"sqlReaderQuery": "select id,sourcedb,sourceschema,sourcetablename,destdb,destschema,desttablename from [tbl_Staging_Pipeline_Details] where isactiveflag='Y'\norder by id",
 						"queryTimeout": "02:00:00"
 					},
 					"dataset": {
