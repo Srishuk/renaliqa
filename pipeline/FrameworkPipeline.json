@@ -84,7 +84,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('GetListOfTables').output.value",
+						"value": "@activity('GetListOfTables for the Pipeline').output.value",
 						"type": "Expression"
 					},
 					"isSequential": true,
