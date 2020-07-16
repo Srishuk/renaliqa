@@ -1,0 +1,25 @@
+{
+	"name": "Clients to DM_ALL",
+	"properties": {
+		"activities": [
+			{
+				"name": "Pipeline 1",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "FrameworkPipeline",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true,
+					"parameters": {
+						"id": "1",
+						"Overwrite": true
+					}
+				}
+			}
+		],
+		"annotations": []
+	}
+}
