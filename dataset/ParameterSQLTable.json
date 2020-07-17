@@ -1,0 +1,46 @@
+{
+	"name": "ParameterSQLTable",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ParameterSourceConnection",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"servername": {
+					"value": "@dataset().servername",
+					"type": "Expression"
+				},
+				"databasename": {
+					"value": "@dataset().databasename",
+					"type": "Expression"
+				}
+			}
+		},
+		"parameters": {
+			"servername": {
+				"type": "string"
+			},
+			"databasename": {
+				"type": "string"
+			},
+			"tablename": {
+				"type": "string"
+			},
+			"schemaname": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": {
+				"value": "@dataset().schemaname",
+				"type": "Expression"
+			},
+			"table": {
+				"value": "@dataset().tablename",
+				"type": "Expression"
+			}
+		}
+	}
+}
