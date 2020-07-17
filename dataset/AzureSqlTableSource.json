@@ -2,13 +2,9 @@
 	"name": "AzureSqlTableSource",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "ParameterSourceConnection",
+			"referenceName": "AzureSqlDatabaseSource",
 			"type": "LinkedServiceReference",
 			"parameters": {
-				"servername": {
-					"value": "@dataset().servername",
-					"type": "Expression"
-				},
 				"databasename": {
 					"value": "@dataset().databasename",
 					"type": "Expression"
@@ -23,9 +19,6 @@
 				"type": "string"
 			},
 			"tablename": {
-				"type": "string"
-			},
-			"servername": {
 				"type": "string"
 			}
 		},
